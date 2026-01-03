@@ -29,5 +29,23 @@ export default function AdminDashboard(){
         setFormData({restaurantId: '', restaurantName: '',address: '',type:'',parking:''});
         alert('Restaurant added successfully!');
     };
-    
+    const update =(r)=>{
+        window.location.href=`/admin/restaurant/update?restaurantId=${r.restaurantId}`
+    }
+    return (
+        <div style={{display:'flex'}}>
+            <div style={{width:280, padding:20}}>
+                <h3>Add Restaurantn</h3>
+                <form onSubmit={handleAdd}>
+                    <input placeholder="Name" value={formData.restaurantName} onChange={e=>
+                        setFormData({...formData,restaurantName:e.target.value})
+                    } required style={{display:"block",width:'100%', margin:'5px 0' , padding:'8px'}}/>
+                    <input placeholder="Address" value={formData.address} onChange={e=>setFormData({...formData,address:e.target.value})} required
+                    style={{display:"block",width:'100%', margin:'5px 0' , padding:'8px'}}/>
+                    <select value={formData.type} onChange={e=>setFormData({...formData,type:e.target.value})}
+                    required style={{display:"block",width:'100%', margin:'5px 0' , padding:'8px'}}/>
+                </form>
+            </div>
+        </div>
+    )
 }
